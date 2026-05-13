@@ -37,8 +37,8 @@ def load_tasks_supabase() -> list:
         client = create_client(url, key)
         res = (
             client.table(SUPABASE_TABLE)
-            .select("position,task,assignee,due_date,done")
-            .order("position")
+            .select("id,task,assignee,due_date,done")
+            .order("id")
             .execute()
         )
     except Exception as e:
@@ -81,7 +81,6 @@ def save_tasks_supabase(tasks: list) -> None:
             due_s = str(pd.Timestamp(d).date())
         rows.append(
             {
-                "position": i,
                 "task": t.get("Task") or "",
                 "assignee": t.get("Assignee") or "",
                 "due_date": due_s,
@@ -90,7 +89,7 @@ def save_tasks_supabase(tasks: list) -> None:
         )
     try:
         # Every row has position >= 0, so this clears the whole board.
-        client.table(SUPABASE_TABLE).delete().neq("position", -1).execute()
+        client.table(SUPABASE_TABLE).delete().gt("id", 0).execute()
         if rows:
             client.table(SUPABASE_TABLE).insert(rows).execute()
     except Exception as e:
@@ -144,7 +143,7 @@ def _rerun() -> None:
 st.set_page_config(page_title="Snowboard Project Tracker", layout="wide")
 
 # --- TITLE ---
-st.title("🏂 Snowboard Energy Project Tracker")
+st.title("🏂 🏂 Snowboard Lodge Task Board")
 st.caption("Tiny progress still counts.")
 
 # --- PROJECT TITLE ---

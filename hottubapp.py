@@ -418,9 +418,103 @@ if st.session_state.tasks:
     )
 
     # FUN LITTLE MESSAGE
-    if progress == 1:
-        st.snow()
-        st.success("🏂 All tasks complete! Time to ride.")
+    #if progress == 1:
+        #st.snow()
+        #st.success("🏂 All tasks complete! Time to ride.")
+
+    # APRÈS-SKI CELEBRATION
+if progress == 1:
+    st.markdown(
+        """
+        <style>
+        @keyframes apresFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                text-shadow:
+                    0 0 8px #ff9966,
+                    0 0 18px #ff7733,
+                    0 0 28px #ff5500;
+            }
+
+            50% {
+                text-shadow:
+                    0 0 14px #ffbb88,
+                    0 0 30px #ff8844,
+                    0 0 48px #ff5500;
+            }
+        }
+
+        .apres-overlay {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,170,90,0.18) 0%,
+                    rgba(120,50,10,0.78) 100%
+                );
+
+            backdrop-filter: blur(3px);
+            z-index: 99999;
+            pointer-events: none;
+
+            animation: apresFade 0.7s ease forwards;
+        }
+
+        .apres-neon {
+            position: fixed;
+            top: 38%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: 0.18em;
+
+            color: #ffd6b3;
+
+            text-shadow:
+                0 0 8px #ff9966,
+                0 0 18px #ff7733,
+                0 0 28px #ff5500;
+
+            animation: neonPulse 1.6s infinite;
+
+            z-index: 100000;
+
+            font-family: sans-serif;
+        }
+
+        .apres-sub {
+            position: fixed;
+            top: 52%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            color: #fff4ea;
+            font-size: 1.3rem;
+            letter-spacing: 0.08em;
+
+            z-index: 100000;
+        }
+        </style>
+
+        <div class="apres-overlay"></div>
+
+        <div class="apres-neon">
+            HOT TUB OPEN
+        </div>
+
+        <div class="apres-sub">
+            All runs cleared. Time for après-ski.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 else:
     st.info("No tasks added yet.")
 

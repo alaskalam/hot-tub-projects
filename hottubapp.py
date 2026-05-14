@@ -210,13 +210,16 @@ def _flash_snowboard_completion() -> None:
         .sb-celebrate-sky {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                180deg,
-                #6ba8f0 0%,
-                #9ec9fb 18%,
-                #c9e2ff 45%,
-                #e8f3ff 100%
-            );
+
+            background-image:
+                linear-gradient(
+                    180deg,
+                    rgba(60, 120, 190, 0.45) 0%,
+                    rgba(120, 180, 240, 0.15) 100%
+                ),
+                url("https://www.killingtonzone.com/albums/album36/killington_1980s.sized.jpg");
+            background-size: cover;
+            background-position: center;
         }
         .sb-celebrate-mtn {
             position: absolute;

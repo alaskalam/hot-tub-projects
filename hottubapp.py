@@ -12,7 +12,7 @@ SUPABASE_TABLE = "shared_board_tasks"
 # Snowboard celebration overlay — swap for any direct image URL ("open in new tab" = just the photo).
 
 SB_MOUNTAIN_BG_URL = (
-    "https://www.killingtonzone.com/albums/album36/killington_1980s.sized.jpg"
+    "https://raw.githubusercontent.com/alaskalam/hot-tub-projects/main/assets/killytrail.jpg"
     "?auto=format&fit=crop&w=1600&q=80"
 )
 

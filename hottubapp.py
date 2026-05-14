@@ -488,6 +488,7 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
                 0 0 28px #ff5500;
 
             animation: neonPulse 1.6s infinite;
+            animation: apresFade 4s ease forwards;
 
             z-index: 100000;
 
@@ -505,6 +506,8 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
             letter-spacing: 0.08em;
 
             z-index: 100000;
+
+            animation: apresFade 4s ease forwards;
         }
         </style>
 

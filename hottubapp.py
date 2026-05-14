@@ -501,7 +501,7 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
 
         .apres-sub {
             position: fixed;
-            top: 62%;
+            top: 72%;
             left: 50%;
             transform: translateX(-50%);
 

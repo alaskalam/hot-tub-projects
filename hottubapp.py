@@ -409,6 +409,9 @@ if st.session_state.tasks:
 
     progress = completed_tasks / total_tasks
 
+    if progress < 1:
+        st.session_state.apres_shown = False
+
     st.subheader("🏔️ Progress")
 
     st.progress(progress)
@@ -423,7 +426,7 @@ if st.session_state.tasks:
         #st.success("🏂 All tasks complete! Time to ride.")
 
     # APRÈS-SKI CELEBRATION
-if progress == 1:
+if progress == 1 and not st.session_state.get("apres_shown", False):
     st.markdown(
         """
         <style>
@@ -515,6 +518,7 @@ if progress == 1:
         """,
         unsafe_allow_html=True,
     )
+    st.session_state.apres_shown = True
 else:
     st.info("No tasks added yet.")
 

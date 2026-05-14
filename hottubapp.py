@@ -2,7 +2,7 @@ import json
 from datetime import date, datetime
 from pathlib import Path
 from typing import Optional, Tuple
-
+x
 import pandas as pd
 import streamlit as st
 
@@ -10,8 +10,9 @@ TASKS_SAVE_PATH = Path(__file__).resolve().parent / "saved_tasks.json"
 SUPABASE_TABLE = "shared_board_tasks"
 
 # Snowboard celebration overlay — swap for any direct image URL ("open in new tab" = just the photo).
+
 SB_MOUNTAIN_BG_URL = (
-    "https://images.unsplash.com/photo-1517825738774-7de9363ef735?q=80&w=1600&auto=format&fit=crop"
+    "https://www.killingtonzone.com/albums/album36/killington_1980s.sized.jpg"
     "?auto=format&fit=crop&w=1600&q=80"
 )
 

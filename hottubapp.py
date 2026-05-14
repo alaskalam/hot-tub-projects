@@ -9,6 +9,12 @@ import streamlit as st
 TASKS_SAVE_PATH = Path(__file__).resolve().parent / "saved_tasks.json"
 SUPABASE_TABLE = "shared_board_tasks"
 
+# Snowboard celebration overlay — swap for any direct image URL ("open in new tab" = just the photo).
+SB_MOUNTAIN_BG_URL = (
+    "https://www.tripsavvy.com/thmb/rj5ZIUSjRgChLRB61nMI4wPFmXA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-103821767-5a134150494ec900379b5afa.jpg"
+    "?auto=format&fit=crop&w=1600&q=80"
+)
+
 
 def _supabase_credentials() -> Optional[Tuple[str, str]]:
     try:
@@ -182,8 +188,8 @@ def _flash_hottub_emoji() -> None:
 
 def _flash_snowboard_completion() -> None:
     """Full-screen mini scene: mountain + snowboarder when a task is marked completed."""
-    st.markdown(
-        """
+    _bg = SB_MOUNTAIN_BG_URL.replace("\\", "/")
+    _html = """
         <style>
         @keyframes sb-scene-fade {
             0%, 72% { opacity: 1; }
@@ -204,31 +210,56 @@ def _flash_snowboard_completion() -> None:
         .sb-celebrate-sky {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, #b9dff7 0%, #e8f4fc 50%, #f4f9fd 100%);
+            background: linear-gradient(
+                180deg,
+                #6ba8f0 0%,
+                #9ec9fb 18%,
+                #c9e2ff 45%,
+                #e8f3ff 100%
+            );
         }
         .sb-celebrate-mtn {
             position: absolute;
-            left: -8%;
-            right: -8%;
+            left: -12%;
+            right: -12%;
             bottom: 0;
-            height: 62%;
-            background: linear-gradient(168deg, #355a38 0%, #5c7f52 30%, #7d6a4a 55%, #9c8268 100%);
-            clip-path: polygon(0% 100%, 8% 52%, 30% 68%, 50% 36%, 70% 55%, 90% 40%, 100% 62%, 100% 100%);
+            height: 72%;
+            clip-path: polygon(
+                0% 100%,
+                5% 46%,
+                26% 66%,
+                50% 28%,
+                74% 50%,
+                93% 34%,
+                100% 56%,
+                100% 100%
+            );
+            background-image:
+                linear-gradient(
+                    168deg,
+                    rgba(8, 22, 42, 0.72) 0%,
+                    rgba(25, 55, 80, 0.25) 38%,
+                    rgba(180, 215, 245, 0.4) 100%
+                ),
+                url("__MOUNTAIN_BG__");
+            background-size: cover;
+            background-position: center 55%;
+            filter: saturate(1.12) contrast(1.08) brightness(1.03);
         }
         .sb-celebrate-snowline {
             position: absolute;
             left: 0;
             right: 0;
-            bottom: 38%;
-            height: 14%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+            bottom: 36%;
+            height: 16%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0) 100%);
             clip-path: polygon(0% 85%, 22% 38%, 52% 62%, 80% 32%, 100% 58%, 100% 100%, 0% 100%);
         }
         .sb-celebrate-rider {
             position: absolute;
             font-size: clamp(2.4rem, 7.5vw, 3.4rem);
             line-height: 1;
-            filter: drop-shadow(0 0.25rem 0.4rem rgba(0,0,0,0.28));
+            filter: drop-shadow(0 0.25rem 0.4rem rgba(0,0,0,0.35));
             animation: sb-shred 2.1s cubic-bezier(0.33, 0, 0.15, 1) forwards;
         }
         </style>
@@ -238,9 +269,8 @@ def _flash_snowboard_completion() -> None:
             <div class="sb-celebrate-snowline"></div>
             <div class="sb-celebrate-rider">🏂</div>
         </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    """
+    st.markdown(_html.replace("__MOUNTAIN_BG__", _bg), unsafe_allow_html=True)
 
 
 st.set_page_config(page_title="Snowboard Project Tracker", layout="wide")

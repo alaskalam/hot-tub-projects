@@ -143,8 +143,8 @@ def _rerun() -> None:
 st.set_page_config(page_title="Snowboard Project Tracker", layout="wide")
 
 # --- TITLE ---
-st.title("🏂 🏂 Snowboard Lodge Task Board")
-st.caption("Tiny progress still counts.")
+st.title("🏂 🏂 Ski Lodge Task Board")
+st.caption("Only those who are willing to go too far can possibly see how far one can go.")
 
 # --- PROJECT TITLE ---
 project_title = st.text_input(

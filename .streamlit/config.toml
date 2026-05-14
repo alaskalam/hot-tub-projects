@@ -1,0 +1,11 @@
+# Theme colors for the whole app (restart Streamlit after editing).
+# Change backgroundColor / secondaryBackgroundColor to any hex you like.
+# Docs: https://docs.streamlit.io/develop/concepts/configuration/custom_theme
+
+[theme]
+base = "light"
+primaryColor = "#2563eb"
+backgroundColor = "#8dd9bf"
+secondaryBackgroundColor = "#ffffff"
+textColor = "#5e17eb"
+font = "sans serif"

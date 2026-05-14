@@ -419,7 +419,7 @@ if st.session_state.tasks:
 
     # FUN LITTLE MESSAGE
     if progress == 1:
-        st.balloons()
+        st.snow()
         st.success("🏂 All tasks complete! Time to ride.")
 else:
     st.info("No tasks added yet.")

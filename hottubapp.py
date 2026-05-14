@@ -166,11 +166,10 @@ def _flash_hottub_emoji() -> None:
 
             color: white;
 
+
             text-shadow:
                 0 0 10px rgba(0,0,0,0.45),
                 0 0 20px rgba(0,0,0,0.28);
-
-            animation: hottub-task-text-fade 2.1s ease-in-out forwards;
             
         }
 

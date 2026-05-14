@@ -156,7 +156,7 @@ def _flash_hottub_emoji() -> None:
         f"""
         <style>
 
-        .htb-task-text {
+        .htb-task-text {{
             margin-top: 1rem;
             text-align: center;
            
@@ -171,7 +171,7 @@ def _flash_hottub_emoji() -> None:
                 0 0 10px rgba(0,0,0,0.45),
                 0 0 20px rgba(0,0,0,0.28);
             
-        }
+        }}
 
         
         @keyframes hottub-task-added {{

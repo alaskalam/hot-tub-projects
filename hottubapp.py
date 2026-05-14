@@ -181,7 +181,7 @@ def _flash_hottub_emoji() -> None:
             14% {{ opacity: 1; }}
             72% {{ opacity: 1; }}
             100% {{ opacity: 0; }}
-}}
+        }}
 
 
         @keyframes hottub-task-added {{

@@ -140,6 +140,46 @@ def _rerun() -> None:
         st.experimental_rerun()
 
 
+def _flash_hottub_emoji() -> None:
+    """Hot tub image overlay for a couple seconds after a task is added."""
+    splash_url = (
+        "https://imgproxy.attic.sh/insecure/f:webp/h:1434/q:90/w:1434/plain/"
+        "https://attic.sh/9sm6qi8g68mdx7ybkumio3ostdzz"
+    )
+    st.markdown(
+        f"""
+        <style>
+        @keyframes hottub-task-added {{
+            0% {{ transform: translate(-50%, -50%) scale(0); opacity: 0; }}
+            14% {{ transform: translate(-50%, -50%) scale(1); opacity: 1; }}
+            72% {{ transform: translate(-50%, -50%) scale(1); opacity: 1; }}
+            100% {{ transform: translate(-50%, -50%) scale(0.25); opacity: 0; }}
+        }}
+        .htb-task-added-splash {{
+            position: fixed;
+            left: 50%;
+            top: 30%;
+            z-index: 100001;
+            line-height: 0;
+            pointer-events: none;
+            user-select: none;
+            animation: hottub-task-added 2.1s ease-in-out forwards;
+            filter: drop-shadow(0 0.4rem 0.55rem rgba(0, 0, 0, 0.18));
+        }}
+        .htb-task-added-splash img {{
+            display: block;
+            width: min(42vw, 260px);
+            height: auto;
+        }}
+        </style>
+        <div class="htb-task-added-splash" aria-hidden="true">
+          <img src="{splash_url}" alt="" />
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 st.set_page_config(page_title="Snowboard Project Tracker", layout="wide")
 
 # --- TITLE ---
@@ -172,6 +212,7 @@ if st.session_state.pop("_clear_add_task_form", False):
 # --- ADD TASK SECTION ---
 st.subheader("➕ Add a Task")
 if st.session_state.task_add_message:
+    _flash_hottub_emoji()
     st.success(st.session_state.task_add_message)
     st.session_state.task_add_message = None
 

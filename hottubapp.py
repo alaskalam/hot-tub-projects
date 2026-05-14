@@ -180,6 +180,69 @@ def _flash_hottub_emoji() -> None:
     )
 
 
+def _flash_snowboard_completion() -> None:
+    """Full-screen mini scene: mountain + snowboarder when a task is marked completed."""
+    st.markdown(
+        """
+        <style>
+        @keyframes sb-scene-fade {
+            0%, 72% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes sb-shred {
+            0% { left: 6%; top: 16%; transform: rotate(-38deg) scale(0.85); }
+            45% { left: 40%; top: 34%; transform: rotate(-8deg) scale(1); }
+            100% { left: 74%; top: 50%; transform: rotate(22deg) scale(1); }
+        }
+        .sb-celebrate-wrap {
+            position: fixed;
+            inset: 0;
+            z-index: 99990;
+            pointer-events: none;
+            animation: sb-scene-fade 2.7s ease forwards;
+        }
+        .sb-celebrate-sky {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, #b9dff7 0%, #e8f4fc 50%, #f4f9fd 100%);
+        }
+        .sb-celebrate-mtn {
+            position: absolute;
+            left: -8%;
+            right: -8%;
+            bottom: 0;
+            height: 62%;
+            background: linear-gradient(168deg, #355a38 0%, #5c7f52 30%, #7d6a4a 55%, #9c8268 100%);
+            clip-path: polygon(0% 100%, 8% 52%, 30% 68%, 50% 36%, 70% 55%, 90% 40%, 100% 62%, 100% 100%);
+        }
+        .sb-celebrate-snowline {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 38%;
+            height: 14%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 100%);
+            clip-path: polygon(0% 85%, 22% 38%, 52% 62%, 80% 32%, 100% 58%, 100% 100%, 0% 100%);
+        }
+        .sb-celebrate-rider {
+            position: absolute;
+            font-size: clamp(2.4rem, 7.5vw, 3.4rem);
+            line-height: 1;
+            filter: drop-shadow(0 0.25rem 0.4rem rgba(0,0,0,0.28));
+            animation: sb-shred 2.1s cubic-bezier(0.33, 0, 0.15, 1) forwards;
+        }
+        </style>
+        <div class="sb-celebrate-wrap" aria-hidden="true">
+            <div class="sb-celebrate-sky"></div>
+            <div class="sb-celebrate-mtn"></div>
+            <div class="sb-celebrate-snowline"></div>
+            <div class="sb-celebrate-rider">🏂</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 st.set_page_config(page_title="Snowboard Project Tracker", layout="wide")
 
 # --- TITLE ---
@@ -273,6 +336,19 @@ if st.session_state.tasks:
     )
     st.session_state.tasks = edited.to_dict("records")
 
+    done_now = int(edited["Done"].sum())
+    n_now = len(st.session_state.tasks)
+    prev_n = st.session_state.get("_board_task_count")
+    prev_done = st.session_state.get("_board_done_count")
+    if prev_n is None or prev_n != n_now:
+        st.session_state._board_task_count = n_now
+        st.session_state._board_done_count = done_now
+    elif done_now > prev_done:
+        _flash_snowboard_completion()
+        st.session_state._board_done_count = done_now
+    elif done_now < prev_done:
+        st.session_state._board_done_count = done_now
+
     st.caption("Made a mistake? Pick a task and click Remove.")
     n_tasks = len(st.session_state.tasks)
 
@@ -295,7 +371,7 @@ if st.session_state.tasks:
             st.session_state.tasks.pop(int(pick_del))
             _rerun()
 
-    completed_tasks = int(edited["Done"].sum())
+    completed_tasks = done_now
     total_tasks = len(df)
 
     progress = completed_tasks / total_tasks

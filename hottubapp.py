@@ -11,7 +11,7 @@ SUPABASE_TABLE = "shared_board_tasks"
 
 # Snowboard celebration overlay — swap for any direct image URL ("open in new tab" = just the photo).
 SB_MOUNTAIN_BG_URL = (
-    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/5f/ca/a9/caption.jpg?w=1200&h=1200&s=1"
+    "https://images.unsplash.com/photo-1517825738774-7de9363ef735?q=80&w=1600&auto=format&fit=crop"
     "?auto=format&fit=crop&w=1600&q=80"
 )
 

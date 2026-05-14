@@ -476,6 +476,10 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
             left: 50%;
             transform: translateX(-50%);
 
+            text-align: center;
+            line-height: 1.05;
+            white-space: normal;
+
             font-size: clamp(2.8rem, 8vw, 5rem);
             font-weight: 800;
             letter-spacing: 0.18em;
@@ -514,7 +518,7 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
         <div class="apres-overlay"></div>
 
         <div class="apres-neon">
-            HOT TUB OPEN
+            HOT TUB<br>OPEN
         </div>
 
         <div class="apres-sub">

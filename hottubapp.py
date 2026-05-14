@@ -165,6 +165,8 @@ def _flash_hottub_emoji() -> None:
             letter-spacing: 0.03em;
 
             color: white;
+            opacity: 0;
+            animation: hottub-task-added 4s ease-in-out forwards;
 
 
             text-shadow:
@@ -188,7 +190,7 @@ def _flash_hottub_emoji() -> None:
             line-height: 0;
             pointer-events: none;
             user-select: none;
-            animation: hottub-task-added 2.1s ease-in-out forwards;
+            animation: hottub-task-added 4s ease-in-out forwards;
             filter: drop-shadow(0 0.4rem 0.55rem rgba(0, 0, 0, 0.18));
         }}
         .htb-task-added-splash img {{

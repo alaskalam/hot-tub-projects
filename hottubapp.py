@@ -155,6 +155,26 @@ def _flash_hottub_emoji() -> None:
     st.markdown(
         f"""
         <style>
+
+        .htb-task-text {
+            margin-top: 1rem;
+            text-align: center;
+           
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px rgba(0,0,0,0.45),
+                0 0 20px rgba(0,0,0,0.28);
+
+            animation: hottub-task-text-fade 2.1s ease-in-out forwards;
+            
+        }
+
+        
         @keyframes hottub-task-added {{
             0% {{ transform: translate(-50%, -50%) scale(0); opacity: 0; }}
             14% {{ transform: translate(-50%, -50%) scale(1); opacity: 1; }}
@@ -180,6 +200,9 @@ def _flash_hottub_emoji() -> None:
         </style>
         <div class="htb-task-added-splash" aria-hidden="true">
           <img src="{splash_url}" alt="" />
+        </div>
+        <div class="htb-task-text">
+            Get in. The hot tub's waiting.
         </div>
         """,
         unsafe_allow_html=True,

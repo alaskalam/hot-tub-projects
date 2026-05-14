@@ -432,7 +432,9 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
         <style>
         @keyframes apresFade {
             0% { opacity: 0; }
-            100% { opacity: 1; }
+            15% { opacity: 1; }
+            75% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
         @keyframes neonPulse {
@@ -465,7 +467,7 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
             z-index: 99999;
             pointer-events: none;
 
-            animation: apresFade 0.7s ease forwards;
+            animation: apresFade 4s ease forwards;
         }
 
         .apres-neon {

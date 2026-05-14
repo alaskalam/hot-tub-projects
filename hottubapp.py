@@ -166,7 +166,7 @@ def _flash_hottub_emoji() -> None:
 
             color: white;
             opacity: 0;
-            animation: hottub-task-added 4s ease-in-out forwards;
+            animation: hottub-text-fade 4s ease-in-out forwards;
 
 
             text-shadow:
@@ -175,7 +175,14 @@ def _flash_hottub_emoji() -> None:
             
         }}
 
-        
+        @keyframes hottub-text-fade {
+            0% { opacity: 0; }
+            14% { opacity: 1; }
+            72% { opacity: 1; }
+            100% { opacity: 0; }
+}
+
+
         @keyframes hottub-task-added {{
             0% {{ transform: translate(-50%, -50%) scale(0); opacity: 0; }}
             14% {{ transform: translate(-50%, -50%) scale(1); opacity: 1; }}

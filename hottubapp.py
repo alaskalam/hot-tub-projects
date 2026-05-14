@@ -175,13 +175,13 @@ def _flash_hottub_emoji() -> None:
             
         }}
 
-        @keyframes hottub-text-fade {{
-            0% { opacity: 0; }
-            14% { opacity: 1; }
-            72% { opacity: 1; }
-            100% { opacity: 0; }
-}}
 
+        @keyframes hottub-text-fade {{
+            0% {{ opacity: 0; }}
+            14% {{ opacity: 1; }}
+            72% {{ opacity: 1; }}
+            100% {{ opacity: 0; }}
+}}
 
 
         @keyframes hottub-task-added {{

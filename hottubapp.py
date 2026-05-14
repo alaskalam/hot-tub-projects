@@ -157,7 +157,7 @@ def _flash_hottub_emoji() -> None:
         <style>
 
         .htb-task-text {{
-            margin-top: 20rem;
+            margin-top: 7rem;
             text-align: center;
            
             font-size: clamp(1rem, 2vw, 1.4rem);

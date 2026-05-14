@@ -474,7 +474,7 @@ if progress == 1 and not st.session_state.get("apres_shown", False):
             position: fixed;
             top: 38%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
 
             font-size: clamp(2.8rem, 8vw, 5rem);
             font-weight: 800;
